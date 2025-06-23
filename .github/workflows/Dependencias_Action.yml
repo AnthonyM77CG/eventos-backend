@@ -30,12 +30,9 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-    - name: Establecer JAVA_HOME manualmente (solución)
-      run: echo "JAVA_HOME=$JAVA_HOME" >> $GITHUB_ENV
-      
-    - name: Ejecutar Dependency-Check
-      uses: dependency-check/Dependency-Check_Action@main
+    - name: Escaneo de dependencias (GitHub nativo)
+      uses: github/codeql-action/init@v2
       with:
-        project: "Spring Boot Backend"
-        format: "HTML"
-        out: "dependency-check-report"
+        languages: java
+    - name: Ejecutar CodeQL
+      uses: github/codeql-action/analyze@v2
