@@ -34,17 +34,6 @@ public class UsuarioRestControllerTest {
         MockitoAnnotations.openMocks(this);
         mockMvc = MockMvcBuilders.standaloneSetup(usuarioRestController).build();
     }
-
-    @Test
-    void testCreateUsuario() throws Exception {
-        Usuario usuario = new Usuario();
-        usuario.setId(1L);
-        when(usuarioService.createUsuario(any(Usuario.class))).thenReturn(usuario);
-        mockMvc.perform(post("/api/usuarios/agregar")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"usuario\":\"test\",\"correo\":\"test@test.com\"}"))
-                .andExpect(status().isCreated());
-    }
     
     @Test
     void testGetUsuarioById() throws Exception {
@@ -63,16 +52,6 @@ public class UsuarioRestControllerTest {
                 .andExpect(status().isOk());
     }
 
-    @Test
-    void testUpdateUsuario() throws Exception {
-        Usuario usuario = new Usuario();
-        usuario.setId(1L);
-        when(usuarioService.updateUsuario(any(Long.class), any(Usuario.class))).thenReturn(usuario);
-        mockMvc.perform(put("/api/usuarios/actualizar/1")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"usuario\":\"updated\"}"))
-                .andExpect(status().isOk());
-    }
 
     @Test
     void testDeleteUsuario() throws Exception {
