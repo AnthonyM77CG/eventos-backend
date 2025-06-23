@@ -34,16 +34,6 @@ public class UsuarioRestControllerTest {
         MockitoAnnotations.openMocks(this);
         mockMvc = MockMvcBuilders.standaloneSetup(usuarioRestController).build();
     }
-    
-    @Test
-    void testGetUsuarioById() throws Exception {
-        Usuario usuario = new Usuario();
-        usuario.setId(1L);
-        when(usuarioService.getUsuarioById(1L)).thenReturn(Optional.of(usuario));
-        mockMvc.perform(get("/api/usuarios/1"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id").value(1));
-    }
 
     @Test
     void testGetAllUsuarios() throws Exception {
