@@ -34,5 +34,9 @@ jobs:
       uses: github/codeql-action/init@v2
       with:
         languages: java
+        
+    - name: Compilar proyecto
+      run: mvn clean compile
+      
     - name: Ejecutar CodeQL
       uses: github/codeql-action/analyze@v2
