@@ -31,3 +31,9 @@ jobs:
 
       - name: Build with Maven
         run: mvn clean compile
+        
+      - name: Verificar estilo de código (Checkstyle)
+        run: mvn checkstyle:checkstyle
+
+      - name: Mostrar dependencias desactualizadas
+        run: mvn versions:display-dependency-updates
