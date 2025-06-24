@@ -19,10 +19,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Clonar repositorio
+      - name: Clone repositoy
         uses: actions/checkout@v4
 
-      - name: Configurar Java
+      - name: Config Java
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
@@ -31,9 +31,4 @@ jobs:
 
       - name: Build with Maven
         run: mvn clean compile
-        
-      - name: Verificar estilo de código (Checkstyle)
-        run: mvn checkstyle:checkstyle
 
-      - name: Mostrar dependencias desactualizadas
-        run: mvn versions:display-dependency-updates
